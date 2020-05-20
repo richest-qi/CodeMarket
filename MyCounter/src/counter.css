@@ -1,0 +1,18 @@
+.btn{
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    background: hsl(210,13%,75%);
+    text-align: center;
+    line-height: 2em;
+    margin-right: 1em;
+    border-radius: .5em;
+    color: hsl(210,13%,45%);
+    text-shadow: -1px -1px 1px #fff;
+}
+.btn:hover{
+    cursor: pointer;
+}
+.digit{
+    
+}
