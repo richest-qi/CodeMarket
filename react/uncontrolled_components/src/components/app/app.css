@@ -1,0 +1,7 @@
+#logo{
+    margin:30px auto 0;
+    /* background-image:url(../../../assets/imgs/icon_google.png); */
+    background-image:url(/assets/imgs/icon_google.png);
+    width:271px;
+    height:90px;
+}

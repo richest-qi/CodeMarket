@@ -1,0 +1,49 @@
+.label{
+    padding: 0;
+    border:0;
+    width:1px;
+    height:1px;
+    margin-left:-1px;
+    clip-path: polygon(0 0,0 0,0 0,0 0);
+    overflow:hidden;
+    position:absolute;
+}
+#content{
+    margin:15px auto 0;
+    width:440px;
+    height:44px;
+    position:relative;
+}
+#searchText{
+    position:absolute;
+    left:0;
+    top:0;
+    width:inherit;
+    height:inherit;
+    box-sizing:border-box;
+    border:1px solid lightgray;
+    padding-left:40px;
+    border-radius:22px;
+    font-size:16px;
+}
+#searchText:focus{
+    outline:none;
+}
+.search_icon{
+    /* background-image:url(../../../assets/imgs/icon_search.png); */
+    background-image:url(/assets/imgs/icon_search.png);
+    position:absolute;
+    width:16px;
+    height:16px;
+    left:16px;
+    top:16px;
+}
+.audio_icon{
+    /* background-image:url(../../../assets/imgs/icon_microphone.png); */
+    background-image:url(/assets/imgs/icon_microphone.png);
+    position:absolute;
+    width:32px;
+    height:32px;
+    right:16px;
+    top:6px;
+}
