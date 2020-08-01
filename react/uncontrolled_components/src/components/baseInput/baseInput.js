@@ -28,6 +28,15 @@ class BaseInput extends React.Component{
         this.handleInput = (e) => {
             this.props.onInput(e.target.value);
         }
+        this.handleChange = (e) => {
+            this.props.onChange(e.target.value);
+        }
+    }
+    componentDidMount(){
+        document.querySelector('#searchText').addEventListener('change',this.handleChange);
+    }
+    componentWillUnmount(){
+        document.querySelector('#searchText').removeEventListener('change',this.handleChange);
     }
     render(){
         return (
