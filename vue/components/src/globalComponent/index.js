@@ -3,8 +3,7 @@ import App from "./app.vue";
 
 Vue.component("AnchoredHeading4gc",{
     template:
-    '<div>\
-        <h1 v-if="level===1">\
+    '<h1 v-if="level===1">\
             <slot></slot>\
         </h1>\
         <h2 v-else-if="level===2">\
@@ -21,8 +20,7 @@ Vue.component("AnchoredHeading4gc",{
         </h5>\
         <h6 v-else-if="level===6">\
             <slot></slot>\
-        </h6>\
-    </div>',
+        </h6>',
     props:{
         level:{
             type:Number,
