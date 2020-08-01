@@ -31,7 +31,7 @@ module.exports = merge(common,{
                             webp: {
                                 quality: 75
                             }
-                            }                           
+                        }                           
                     }
                 ]
             }

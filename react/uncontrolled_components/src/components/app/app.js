@@ -11,6 +11,9 @@ class App extends React.Component{
         this.onChange = (value) => {
             console.log("change:",value);
         }
+        this.onTextInput = (value) => {
+            console.log("textInput:",value);
+        }
     }
     render(){
         return (
@@ -20,6 +23,7 @@ class App extends React.Component{
                 defaultValue="在Google上搜索，或者输入一个网址"
                 onInput={this.onInput}
                 onChange={this.onChange}
+                onTextInput={this.onTextInput}
             />                
             </>
         )

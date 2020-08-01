@@ -1,5 +1,6 @@
 import React from "react";
 import "./baseInput.css";
+import $ from "jquery";
 
 class BaseInput extends React.Component{
     constructor(props){
@@ -31,12 +32,17 @@ class BaseInput extends React.Component{
         this.handleChange = (e) => {
             this.props.onChange(e.target.value);
         }
+        this.handleTextInput = (e) => {
+            this.props.onTextInput(e.target.value);
+        }
     }
     componentDidMount(){
         document.querySelector('#searchText').addEventListener('change',this.handleChange);
+        $('#searchText').on("textInput",this.handleTextInput);
     }
     componentWillUnmount(){
         document.querySelector('#searchText').removeEventListener('change',this.handleChange);
+        $('#searchText').off('textInput',this.handleTextInput);
     }
     render(){
         return (

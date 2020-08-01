@@ -15,6 +15,7 @@ module.exports = {
         extensions:['.js','.json']
     },
     module:{
+        noParse:/jquery/,
         rules:[
             {
                 test:/\.js$/,
