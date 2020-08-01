@@ -1,20 +1,20 @@
 <template>
     <div class="container4sfc">
         <div>single file component</div>
-        <AnchoredHeading v-bind:level="1">hello</AnchoredHeading>        
-        <AnchoredHeading v-bind:level="2">world</AnchoredHeading>    
-        <AnchoredHeading v-bind:level="3">have</AnchoredHeading>    
-        <AnchoredHeading v-bind:level="4">a</AnchoredHeading>    
-        <AnchoredHeading v-bind:level="5">nice</AnchoredHeading>    
-        <AnchoredHeading v-bind:level="6">day</AnchoredHeading>    
+        <AnchoredHeading4sfc v-bind:level="1">hello</AnchoredHeading4sfc>        
+        <AnchoredHeading4sfc v-bind:level="2">world</AnchoredHeading4sfc>    
+        <AnchoredHeading4sfc v-bind:level="3">have</AnchoredHeading4sfc>    
+        <AnchoredHeading4sfc v-bind:level="4">a</AnchoredHeading4sfc>    
+        <AnchoredHeading4sfc v-bind:level="5">nice</AnchoredHeading4sfc>    
+        <AnchoredHeading4sfc v-bind:level="6">day</AnchoredHeading4sfc>    
     </div>
 </template>
 
 <script>
-import AnchoredHeading from "./anchoredHeading.vue";
+import AnchoredHeading4sfc from "./anchoredHeading4sfc.vue";
 export default {
     components:{
-        AnchoredHeading
+        AnchoredHeading4sfc
     }
 }
 </script>
