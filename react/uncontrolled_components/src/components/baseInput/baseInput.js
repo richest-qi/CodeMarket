@@ -4,12 +4,26 @@ import "./baseInput.css";
 class BaseInput extends React.Component{
     constructor(props){
         super(props);
-        this.ref = React.createRef();
+
+        // this.ref = React.createRef();
+        // this.handleFocus = () => {
+        //     this.ref.current.value="";
+        // }
+        // this.handleBlur = () => {
+        //     this.ref.current.value=this.props.defaultValue;
+        // }
+        // this.handleInput = (e) => {
+        //     this.props.onInput(e.target.value);
+        // }
+
+        this.ref = (el) => {
+            this.el = el;
+        }
         this.handleFocus = () => {
-            this.ref.current.value="";
+            this.el.value="";
         }
         this.handleBlur = () => {
-            this.ref.current.value=this.props.defaultValue;
+            this.el.value=this.props.defaultValue;
         }
         this.handleInput = (e) => {
             this.props.onInput(e.target.value);
