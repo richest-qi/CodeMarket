@@ -5,6 +5,7 @@ function ButtonGroup(){
     return (
         <>
         <Button dirname="basicRouting"/>
+        <Button dirname="nestedRouting"/>
         </>
     )
 }
