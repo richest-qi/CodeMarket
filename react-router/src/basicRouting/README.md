@@ -1,5 +1,5 @@
 ## 基础路由
-一个`<Router>`控制着三个页面，
+一个`<Router>`通过三个`<Route/>`控制着三个页面，且这些`<Route/>`都放在`<Switch/>`里。
 
 About页面：`<Route path="/about"><About /></Router>`，
 
@@ -9,7 +9,9 @@ Home页面：`<Route path="/"><Home /></Route>` 。
 
 <br/>
 
-点击不同的`<Link/>`会渲染出对应的`<Route/>` ，
+`<Link/>`的`to`属性，`<Route/>`有个`path`属性，用来实现路由匹配。
+
+点击不同的`<Link/>`会渲染出对应的`<Route/>` 。
 
 点击`<Link to="/">Home</Link>`，渲染会Home页面，
 
