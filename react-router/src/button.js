@@ -11,7 +11,9 @@ class Button extends React.Component{
         this.handleClick = () => {
             const self = this;
             async function getComponent(){
-                const component = await import(/*webpackPreload:true */`./${self.props.dirname}/app.js`);
+                const component = await import(
+                     /*webpackPreload:true */
+                    `./${self.props.dirname}/app.js`);
                 return component.default || component;
             }
             getComponent().then(App => {
