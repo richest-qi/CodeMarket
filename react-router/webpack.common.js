@@ -4,7 +4,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 
 module.exports = {
-    entry:"./src/index.js",
+    entry:{
+        index:"./src/index.js"
+    },
     output:{
         filename:"[name].bundle.js",
         chunkFilename:"[name].js",
@@ -52,11 +54,11 @@ module.exports = {
                     test:/[\\/]node_modules[\\/]/,
                     minChunks:1
                 },
-                default:{
-                    name:"common",
-                    chunks:"initial",
-                    minChunks:2
-                }
+                // default:{
+                //     name:"common",
+                //     chunks:"initial",
+                //     minChunks:2
+                // }
             }
         }
     }
