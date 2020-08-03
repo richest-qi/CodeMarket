@@ -3,6 +3,7 @@ import App from "./app.vue";
 
 Vue.component("AnchoredHeading",{
     render:function(createElement){
+        console.log(this.$slot.default);
         return createElement(
             "h"+this.level,
             this.$slots.default
