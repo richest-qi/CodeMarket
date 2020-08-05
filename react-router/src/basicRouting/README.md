@@ -73,7 +73,7 @@ function Home(){
     <Route path="/:id"><Item/></Route>
 </Router>
 ```
-![不使用switch](https://github.com/richest-qi/CodeMarket/blob/master/react-router/assets/imgs/switch.gif)
+![不使用switch](https://github.com/richest-qi/CodeMarket/blob/master/react-router/assets/imgs/switch.gif)<br/>
 当前URL为`/home`时，同时匹配了`/home`和`/:id`，所以`<Home/>`和`<Item/>`这两个组件都渲染出来了。<br/>
 用
 ```javascript
@@ -92,7 +92,7 @@ function Home(){
     </Switch>
 </Router>
 ```
-![使用switch](https://github.com/richest-qi/CodeMarket/blob/master/react-router/assets/imgs/switch2.gif)
+![使用switch](https://github.com/richest-qi/CodeMarket/blob/master/react-router/assets/imgs/switch2.gif)<br/>
 这时，当前URL为`/home`时，仅仅匹配了`/home`，所以只有`<Home/>`这个组件渲染出来了。<br/>
 
 `<Switch>`是用来渲染第一个与当前URL匹配的 `<Route>`或`<Redirect>`。

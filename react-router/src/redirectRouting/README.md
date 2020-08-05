@@ -34,8 +34,8 @@ function Home(props){
 }
 ```
 Route `path`属性与当前URL匹配时，渲染该Route。<br/>
-无法访问 location、history、match这些路由属性。
-![无法访问路由属性](https://github.com/richest-qi/CodeMarket/blob/master/react-router/assets/imgs/Route_render_1.png)
+无法访问 location、history、match这些路由属性。<br/>
+![无法访问路由属性](https://github.com/richest-qi/CodeMarket/blob/master/react-router/assets/imgs/Route_render_1.png)<br/>
 ### 第二种：`<Route component/>`
 ```javascript
 <Router>
@@ -72,8 +72,9 @@ function Home(props){
 Route `path`属性与当前URL匹配时，渲染该Route。<br/>
 `<Route component/>`渲染Route时，可以访问所有的路由属性:history、location、match。<br/>
 每次更新都会重新渲染，也就是说，每次更新都会经历旧组件卸载和新组件的转载过程。<br/>
-所以，从性能角度来讲，不推荐使用`<Route component/>`。
+所以，从性能角度来讲，不推荐使用`<Route component/>`。<br/>
 ![可以访问所有路由属性](https://github.com/richest-qi/CodeMarket/blob/master/react-router/assets/imgs/Route_render_2.png)
+
 ### 第三种：`<Route render=func />`
 ```javascript
 <Router>
@@ -128,7 +129,10 @@ function Users(){
     return <div>Users</div>
 }
 ```
-![可以访问所有路由属性](https://github.com/richest-qi/CodeMarket/blob/master/react-router/assets/imgs/Route_render_3.png)
+
+
+![可以访问所有路由属性](https://github.com/richest-qi/CodeMarket/blob/master/react-router/assets/imgs/Route_render_3.png)<br/>
+
 ### 第四种：`<Route children=func />`
 不论Route `path`属性与当前URL匹配时，该Route都会被渲染。<br/>
 ```javascript
