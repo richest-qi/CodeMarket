@@ -36,10 +36,65 @@ Home页面：`<Route path="/"><Home /></Route>` 。
   ```
 * `Route Matcher`
 
-  * `<Switch>`
-  * `<Route>`
+  * `<Switch>`<br/>
+  * `<Route>`<br/>
+```javascript
+function Item(){
+    const params = useParams();
+    return <div>current id is :{params.id}</div>
+}
+```
+```javascript
+function About(){
+    return <div>About</div>
+}
+```
+```javascript
+function Users(){
+    return <div>Users</div>
+}
+```
+```javascript
+function Home(){
+    return <div>Home</div>
+}
+```
+```javascript
+//不用Switch
+<Router>
+    <ul>
+        <li><Link to="/home">Home</Link></li>
+        <li><Link to="/about">About</Link></li>
+        <li><Link to="/users">Users</Link></li>
+    </ul>
+    <Route path="/home"><Home/></Route>
+    <Route path="/about"><About/></Route>
+    <Route path="/users"><Users/></Route>
+    <Route path="/:id"><Item/></Route>
+</Router>
+```
+当前URL为`/home`时，同时匹配了`/home`和`/:id`，所以`<Home/>`和`<Item/>`这两个组件都渲染出来了。<br/>
+用
+```javascript
+//用Switch
+<Router>
+    <ul>
+        <li><Link to="/home">Home</Link></li>
+        <li><Link to="/about">About</Link></li>
+        <li><Link to="/users">Users</Link></li>
+    </ul>
+    <Switch>
+        <Route path="/home"><Home/></Route>
+        <Route path="/about"><About/></Route>
+        <Route path="/users"><Users/></Route>
+        <Route path="/:id"><Item/></Route>
+    </Switch>
+</Router>
+```
+这时，当前URL为`/home`时，仅仅匹配了`/home`，所以只有`<Home/>`这个组件渲染出来了。<br/>
 
-  `<Route>`是`<Switch>`的子元素，形如：
+`<Switch>`是用来渲染第一个与当前URL匹配的 `<Route>`或`<Redirect>`。
+所以，通常我们会把`<Route>`放到`<Switch>`里，即 让`<Route>`成为`<Switch>`的子元素，形如：
   ```javascript
   <Switch>
     <Route path />
@@ -68,15 +123,14 @@ Home页面：`<Route path="/"><Home /></Route>` 。
   </Switch>
   ```
   或者
-    ```javascript
+  ```javascript
   <Switch>
     <Route exact path="/" />
     <Route path="/about" />
     <Route path="/users" />
   </Switch>
   ```
-  `exact path="/"` 会准确匹配  `/`。
-  
+  `exact path="/"` 会准确匹配  `/`。<br/>
 * `Navigation`
 
   * `<Link>`<br/> 
@@ -90,4 +144,51 @@ Home页面：`<Route path="/"><Home /></Route>` 。
  可以通过`activeClassName`属性设置其激活时的样式：<br/>
  `<NavLink to="/home" activeClassName="highlight">`
   * `<Redirect>`<br/>
-  可以使用`<Redirect to>`进行重定向。
+  `<Redirect to>`<br/>
+    * `to`属性是一个字符串
+    ```javascript
+    <Router>
+        <ul>
+            <li><Link to="/home">Home</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/users">Users</Link></li>
+            
+        </ul>
+        <Redirect from="/" to="/home"/>
+        <Route path="/about"><About/></Route>
+        <Route path="/users"><Users/></Route>
+        <Route path="/home"><Home/></Route>
+    </Router>
+    ```
+    * `to`属性是一个对象，保存在跳转到的网页的location对象里
+    ```javascript
+        <Router>
+            <ul>
+                <li><Link to="/home">Home</Link></li>
+                <li><Link to="/about">About</Link></li>
+                <li><Link to="/users">Users</Link></li>
+                
+            </ul>
+            <Redirect from="/" 
+                    to={{
+                        pathname:"/home",
+                        state:{
+                            from:"/"
+                        },
+                        a:{
+                            b:"hellow world"
+                        }
+                    }}/>
+            <Route path="/about"><About/></Route>
+            <Route path="/users"><Users/></Route>
+            <Route path="/home"><Home/></Route>
+        </Router>
+      ```
+      ```javascript
+      import {useLocation} from "react-router-dom";
+      function Home(){
+          const location = useLocation();
+          console.log(location);
+          return <div>Home</div>
+      }
+      ```
