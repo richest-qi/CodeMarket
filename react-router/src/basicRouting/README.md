@@ -75,7 +75,7 @@ function Home(){
 ```
 ![不使用switch](https://github.com/richest-qi/CodeMarket/blob/master/react-router/assets/imgs/switch.gif)<br/>
 当前URL为`/home`时，同时匹配了`/home`和`/:id`，所以`<Home/>`和`<Item/>`这两个组件都渲染出来了。<br/>
-用
+
 ```javascript
 //用Switch
 <Router>
