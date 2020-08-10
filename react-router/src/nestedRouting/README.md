@@ -8,6 +8,9 @@
 
 
 ### useRouteMatch()
+`useRouteMatch()`会尝试匹配当前URL。<br/>
+不匹配，则返回null；<br/>
+匹配，则返回一个对象，此时可以在不实际渲染Route的情况下，访问匹配数据。
 ```javascript
 const match = useRouteMatch();
 console.log(match.url,match.path);

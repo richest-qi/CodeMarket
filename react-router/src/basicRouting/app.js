@@ -1,11 +1,11 @@
 import React from "react";
-import "./app.css";
+// import "./app.css";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
-  NavLink
+  // NavLink
 } from "react-router-dom";
 
 export default function App() {
@@ -13,12 +13,12 @@ export default function App() {
     <Router>
       <div>
           <ul>
-            {/* <li><Link to="/">Home</Link></li>
+            <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About</Link></li>
-            <li><Link to="/users">Users</Link></li> */}
-            <li><NavLink to="/" activeClassName="highlight">Home</NavLink></li>
+            <li><Link to="/users">Users</Link></li>
+            {/* <li><NavLink to="/" activeClassName="highlight">Home</NavLink></li>
             <li><NavLink to="/about" activeClassName="highlight">About</NavLink></li>
-            <li><NavLink to="/users" activeClassName="highlight">Users</NavLink></li>
+            <li><NavLink to="/users" activeClassName="highlight">Users</NavLink></li> */}
           </ul>
 
         <Switch>

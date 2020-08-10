@@ -41,16 +41,24 @@ export default function App() {
 }
 
 function Home() {
+  // const match = useRouteMatch({
+  //   path:"/",
+  //   exact:true,
+  //   strict:true,
+  //   sensitive:true
+  // });
+  // console.log(match);
   return <h2>Home</h2>;
 }
 
 function About() {
+  // const match = useRouteMatch("/home");
+  // console.log(match);
   return <h2>About</h2>;
 }
 
 function Topics() {
   let match = useRouteMatch();
-
   return (
     <div>
       <h2>Topics</h2>
@@ -76,6 +84,11 @@ function Topics() {
 }
 
 function Topic() {
+  // const match = useRouteMatch();
+  // console.log("userRouteMatch:",match);
+  // const params = useParams();
+  // console.log("useParams:",params);
   let { topicId } = useParams();
   return <h3>Requested topic ID: {topicId}</h3>;
 }
+
