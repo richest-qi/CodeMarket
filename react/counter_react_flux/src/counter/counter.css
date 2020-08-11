@@ -1,0 +1,14 @@
+.button{
+    background-color: lavender;
+    border: 5px solid transparent;
+    margin: 10px;
+}
+.button:hover{
+    cursor:pointer;
+}
+.button:focus{
+    outline:none;
+}
+.counter{
+    font-size:0.75em;
+}
