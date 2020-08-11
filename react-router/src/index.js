@@ -1,15 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import ButtonGroup from "./buttonGroup.js";
+import App from "./app.js";
+
 ReactDOM.render(
-    <ButtonGroup/>,
-    document.querySelector('#buttonGroup')
+   <App/>,
+  document.getElementById("root")
 );
-
-// import App from "./app.js";
-// ReactDOM.render(
-//     <App/>,
-//     document.querySelector('#root')
-// )
-

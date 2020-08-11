@@ -13,6 +13,7 @@ function ButtonGroup(){
         <Button dirname="recursivePath"/>
         <Button dirname="sidebar"/>
         <Button dirname="modelGallery"/>
+        <Button dirname="queryParams"/>
         </>
     )
 }
