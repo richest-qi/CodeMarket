@@ -1,0 +1,10 @@
+.panel{
+    font-size:0.75em;
+    font-weight:bold;
+    margin:10px;
+}
+.sum{
+    border-top:2px solid ;
+    padding-left:95px;
+    width:20px;
+}

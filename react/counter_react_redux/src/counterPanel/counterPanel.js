@@ -30,7 +30,6 @@ class CounterPanel extends React.Component{
                     <Counter key={idx} 
                             id={idx} 
                             value={value} 
-                            handleChange={this.handleChange}
                     />
                 ))
             }
