@@ -6,6 +6,12 @@ Vue.use(Vuex);
 const state = {
     count:0
 }
+const getters = {
+    evenOrOdd:function(state){
+        return state.count%2===0 ? "even" : "odd";
+    }
+}
+
 
 const mutations = {
     increment:function(state){
@@ -18,5 +24,6 @@ const mutations = {
 
 export default new Vuex.Store({
     state,
-    mutations
+    mutations,
+    getters
 });
