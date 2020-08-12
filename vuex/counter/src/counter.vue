@@ -8,17 +8,26 @@
 </template>
 
 <script>
+import {mapState} from "vuex";
 export default {
     // data:function(){
     //     return {
     //         count:this.$store.state.count
     //     }
     // },
-    computed:{
-        count:function(){
-            return this.$store.state.count
-        }
-    },
+
+    // computed:{
+    //     count:function(){
+    //         return this.$store.state.count
+    //     }
+    // },
+
+    // computed:mapState({
+    //     count:state => state.count
+    // }),
+
+    computed:mapState(['count']),
+
     methods:{
         handleIncrement:function(){
             this.$store.commit("increment");
