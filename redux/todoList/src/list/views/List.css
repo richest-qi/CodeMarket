@@ -1,0 +1,27 @@
+ul{
+    list-style: none;
+    padding-left: 0;
+}
+li{
+   padding:5px; 
+}
+
+
+input[type="checkbox"]{
+    margin-right:5px;
+}
+
+.delBtn{
+    display:inline-block;
+    width:16px;
+    height:16px;
+    vertical-align:middle;
+    background:url(../../../assets/imgs/delete_lightblue.png)
+}
+.delBtn:hover{
+    cursor:pointer;
+    background:url(../../../assets/imgs/delete_darkblue.png) no-repeat center;
+}
+.delBtn:active{
+    background:url(../../../assets/imgs/delete_darkblue.png) no-repeat center;
+}
