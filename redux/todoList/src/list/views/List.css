@@ -16,12 +16,14 @@ input[type="checkbox"]{
     width:16px;
     height:16px;
     vertical-align:middle;
-    background:url(../../../assets/imgs/delete_lightblue.png)
+    background:url(../../../assets/imgs/delete.png);
+    filter: saturate(.1) hue-rotate(210deg);
 }
 .delBtn:hover{
     cursor:pointer;
-    background:url(../../../assets/imgs/delete_darkblue.png) no-repeat center;
+    filter:saturate(10) hue-rotate(50deg);
+
 }
 .delBtn:active{
-    background:url(../../../assets/imgs/delete_darkblue.png) no-repeat center;
+    filter:none;
 }
