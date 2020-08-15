@@ -5,6 +5,7 @@
 .tab{
     padding:5px 0;
     margin-right:16px;
+    line-height: 20px;
     color:rgba(0,0,0,.65);
 }
 .tab:hover{
@@ -19,8 +20,10 @@
     content:"";
     display: inline-block;
     width:16px;
-    height:16px;
+    height:20px;
+    line-height: 20px;
     vertical-align: middle;
+    background-repeat: no-repeat;
     filter: saturate(.1) hue-rotate(210deg);
 }
 .all:before{
