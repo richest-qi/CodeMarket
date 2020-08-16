@@ -107,3 +107,5 @@ reselect，只要状态没有变，就是用上一次的缓存结果。<br>
 第三个参数，是一个匿名函数，`(list,tabId) => { return }`，暂且记作函数fn3。<br>
 fn1返回的结果 是 fn3的第一个参数；<br>
 fn2返回的结果 是 fn3的第二个参数。
+
+参考文档：[reselect](https://github.com/reduxjs/reselect)
