@@ -32,12 +32,27 @@ import "./List.css";
 // export default connect(mapStateToProps)(List);
 
 
+
 import {useSelector} from "react-redux";
+import {createSelector} from "reselect";
+const getRes = createSelector(
+    state => state.list,
+    state => state.tabId,
+    (list,tabId) => {
+        switch(tabId){
+            case ALL:return list;
+            case UNDO:return list.filter(item => !item.isDone);
+            case DONE:return list.filter(item => item.isDone);
+        }        
+    }
+)
 
 function List(){
-    const list = useSelector(state=>state.list);
-    const tabId = useSelector(state => state.tabId);
-    const res = getRes(list,tabId);
+    // const list = useSelector(state=>state.list);
+    // const tabId = useSelector(state => state.tabId);
+    // const res = getRes(list,tabId);
+    // const res = useSelector(state => getRes(state));
+    const res = useSelector(getRes);
     return (
         <ul>
             {
@@ -47,13 +62,13 @@ function List(){
     )
 }
 
-function getRes(list,tabId){
-    switch(tabId){
-        case ALL:return list;
-        case UNDO:return list.filter(item => !item.isDone);
-        case DONE:return list.filter(item => item.isDone);
-    }
-}
+// function getRes(list,tabId){
+//     switch(tabId){
+//         case ALL:return list;
+//         case UNDO:return list.filter(item => !item.isDone);
+//         case DONE:return list.filter(item => item.isDone);
+//     }
+// }
 
 export default List;
 
