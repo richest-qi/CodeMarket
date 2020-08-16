@@ -9,11 +9,11 @@ function CounterPanel(props){
     return (
         <div className='panel'>
             {
+                // values.map((value,idx) => (
+                //     <Counter key={idx} id={idx} />
+                // ))
                 values.map((value,idx) => (
-                    <Counter key={idx} 
-                            id={idx} 
-                            value={value} 
-                    />
+                    <Counter key={idx} id={idx} value={values[idx]} />
                 ))
             }
             <div className="sum">{sum}</div>
