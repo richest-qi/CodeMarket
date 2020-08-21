@@ -11,7 +11,7 @@ var app = express()
     console.log(res); //输出"bar"
     ```
 
-    *  `app.set(name,true)`同`app.enable(name)`
+    *  `app.set(name,true)`同`app.enable(name)`<br>
     `app.set(name,false)`同`app.disable(name)`
     ```javascript
     app.set("foo",true);
