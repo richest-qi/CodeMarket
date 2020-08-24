@@ -1,0 +1,7 @@
+#logo{
+    background-image:url(../assets/imgs/logo-qq.svg);
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+}
