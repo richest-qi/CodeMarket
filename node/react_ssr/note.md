@@ -33,10 +33,10 @@ API，如Object.assign()、Array.from()。<br>
 
 
 ### @babel/register
-node对es6的支持不好，es6的class、import、react的jsx都无在node中使用，但@babel/register能够将es6转译成es5。
+node对es6的支持不好，es6的class、import、react的jsx都无在node中使用，但@babel/register能够将es6转译成es5。<br>
 @babel/register会改写`require`命令，所以遇到 用`require`加载`.js`、`.jsx`等文件时 就会先用babel转译。<br>
-使用时，必须先`require("@babel/register")`。
-@babel/register只会对`require`加载的文件进行转译，不会对当前文件进行转译。因此，在使用`require("@babel/register")`的地方，不能出现es6语法，如import、class等<br>
+使用时，必须先`require("@babel/register")`。<br>
+@babel/register只会对`require`加载的文件进行转译，不会对当前文件进行转译。因此，在使用`require("@babel/register")`的地方，不能出现es6语法，如import、class等。<br>
 @babel/register是实时转译，所以仅适用于开发环境。<br>
 
 ## 遇到过的坑
