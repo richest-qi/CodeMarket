@@ -37,4 +37,5 @@ new HtmlWebpackPlugin({
 ```
 
 ## 参考文档
-[react ssr 初体验](https://www.jianshu.com/p/1ff3632056e1)
+[react ssr 初体验](https://www.jianshu.com/p/1ff3632056e1)<br>
+[Serve static files and app.get conflict using Express.js](https://stackoverflow.com/questions/16088824/serve-static-files-and-app-get-conflict-using-express-js)
