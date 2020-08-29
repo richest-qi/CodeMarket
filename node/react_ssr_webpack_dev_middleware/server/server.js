@@ -18,7 +18,8 @@ app.use(WebpackDevMiddleware(compiler,{
 app.use(express.static("./dist"));
 
 app.get("/", (req,res) => {
-    const appHTML = renderToString(<Helloworld/>) ;
+const appHTML = renderToString(<Helloworld/>);
+
     res.render("index.ejs",{
         appHTML:appHTML
     })
