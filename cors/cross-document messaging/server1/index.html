@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>server1</title>
+</head>
+<body>
+    <div>hello</div>
+    <iframe src="http://localhost:3030/index.html" frameborder="0"></iframe>
+    <button>click</button>
+    <script>
+        var btn = document.getElementsByTagName("button")[0];
+        btn.onclick = function(){
+            var iframeWindow = document.getElementsByTagName("iframe")[0].contentWindow;
+            iframeWindow.postMessage("I am server1, who are you?","http://localhost:3030")
+        }
+        window.onmessage = function(event){
+            console.log("");
+            console.log("console from localhost:3000");
+            console.log("event.data = ",event.data);
+            console.log("event.origin = ",event.origin);
+        }
+        
+    </script>
+</body>
+</html>
