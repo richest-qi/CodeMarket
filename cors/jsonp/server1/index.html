@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>server1</title>
+</head>
+<body>
+    <div>hello</div>
+    <button>click</button>
+    <script>
+    var btn = document.querySelector("button");
+    function concatStr(name){
+        return `The name is ${name}`;
+    }
+    var XHR = null;
+    btn.onclick = function(){
+        XHR = new XMLHttpRequest();
+        XHR.open("get","http://localhost:3030/getData?callback=concatStr");
+        XHR.onload = function(){
+            // const text = eval(XHR.responseText);
+            // const text = new Function("return " + XHR.response)();
+            var script = document.createElement("script");
+            script.appendChild(document.createTextNode(`var text = ${XHR.response};console.log(text)`))
+            document.body.appendChild(script);
+        }
+        XHR.send();
+    }
+    </script>
+</body>
+</html>
