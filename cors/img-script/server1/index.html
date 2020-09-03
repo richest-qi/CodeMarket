@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>server1</title>
+</head>
+<body>
+    <div>hello</div>
+    <script>
+    // var img = new Image();
+    // img.src="http://localhost:3030/imgs/d.jpg";
+    // document.body.appendChild(img);
+    
+    var script = document.createElement("script");
+    script.src = "http://localhost:3030/index.js";
+    document.querySelector("title").appendChild(script);
+    </script>
+</body>
+</html>
