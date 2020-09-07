@@ -76,7 +76,7 @@
                 <label for="address">Address</label><input type="text" id="address" autocomplete="off">
             </div>
             <div class="row">
-                <label for="submit"></label><input type="submit" value="确定">
+                <label for="submit"></label><input type="button" value="确定" id="submit">
             </div>
         </form>
         <form id="update_action" class="invisible">
@@ -94,7 +94,7 @@
                 <label for="address">Address</label><input type="text" id="address" autocomplete="off">
             </div>
             <div class="row">
-                <label for="submit"></label><input type="submit" value="确定">
+                <label for="submit"></label><input type="button" value="确定" id="submit">
             </div>
         </form>
         <form id="delete_action" class="invisible">
@@ -103,7 +103,7 @@
                 </select>
             </div>
             <div class="row">
-            <input type="submit" value="确定">
+            <input type="button" value="确定" id="submit">
             </div>
             
         </form>
@@ -113,7 +113,7 @@
     <script>
     let selectedId = "add";
     const btns_elm = document.querySelector(".buttons");
-    const btns_submit = document.querySelectorAll("[type='submit']");
+    const btns_submit = document.querySelectorAll("[type='button']");
     const content = document.querySelector(".content");
     const updateContent = function(){
         getList(function(data){
@@ -146,7 +146,7 @@
             selector.selectedIndex = 0;
             var form = document.querySelector("#"+selectedId+"_action");
             const fields = Array.prototype.filter.call(form.elements, item => {
-                return item.id && item.id!=="user_selector";
+                return item.id && item.id!=="user_selector" && item.id!=="submit";
             })
             
             if(fields.length>0){
@@ -231,7 +231,10 @@
         var form = document.querySelector("#"+selectedId+"_action");
         var newUser = {};
         Array.prototype.forEach.call(form.elements,(field) => {
-            field.id && (newUser[field.id] = field.value);
+            if(field.id && field.id!=="submit"){
+                newUser[field.id] = field.value;
+                field.value = "";
+            }
         })
         addUser(newUser);
     }
@@ -242,7 +245,7 @@
         newInfo["id"] = selectedValue;
         var form = document.querySelector("#"+selectedId+"_action");
         Array.prototype.forEach.call(form.elements,(field) => {
-            if(field.id && field.id !=="user_selector"){
+            if(field.id && field.id !=="user_selector" && field.id!=="submit"){
                 newInfo[field.id] = field.value;
             }
         })
