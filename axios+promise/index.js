@@ -6,7 +6,6 @@ server.use(bodyPraser.json());
 const fs = require("fs");
 const jsonPath = "./data/list.json";
 const encoding = "utf8";
-let ID = 103;
 const readJsonFile = function(){
     return new Promise((resolve,reject) => {
         fs.readFile(jsonPath,encoding,function(err,data){
@@ -29,13 +28,20 @@ server.get("/userlist",function(req,res){
         res.status(200).json(users);
     })
 });
-server.get("/userList/:id",function(req,res){
+server.get("/getuser/:id",function(req,res){
     const id = req.params.id;
     getUserList().then(function(users){
         const user = users[id];
         res.json(user);
-    })
+    })    
 })
+server.get("/getuser",function(req,res){
+    const id = req.query.id;
+    getUserList().then(function(users){
+        const user = users[id];
+        res.json(user);
+    })
+});
 
 server.post("/adduser",function(req,res){
     getUserList().then(function(users){
