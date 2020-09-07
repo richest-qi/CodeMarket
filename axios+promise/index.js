@@ -6,7 +6,7 @@ server.use(bodyPraser.json());
 const fs = require("fs");
 const jsonPath = "./data/list.json";
 const encoding = "utf8";
-
+let ID = 103;
 const readJsonFile = function(){
     return new Promise((resolve,reject) => {
         fs.readFile(jsonPath,encoding,function(err,data){
@@ -40,12 +40,12 @@ server.get("/userList/:id",function(req,res){
 server.post("/adduser",function(req,res){
     getUserList().then(function(users){
         const obj = req.body;
-        const {id} = obj;
+        const {id,...rest} = obj;
         if(users[id]) {
             res.send("user has existed");
             return;
         }
-        users[id] = obj;
+        users[id] = rest;
         const data = JSON.stringify(users,null,4);
         updateUserList(data,function(){
             res.status(200).send("add success");
