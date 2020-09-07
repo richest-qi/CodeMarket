@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios+express</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        body{
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        ul{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .item{
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid lightskyblue;
+            width: 200px;
+            border-radius: 5px;
+        }
+        .button{
+            padding: 5px 10px;
+            background: #40a9ff;
+            color: white;
+            cursor: pointer;
+        }
+        .button:hover{
+            background: #1296db;
+        }
+
+        .button.selected{
+            background: #096dd9;
+        }
+        form{
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid lightskyblue;
+        }
+        .row{
+            margin: 5px 0;
+        }
+        .row label{
+            display: inline-block;
+            width: 60px;
+            line-height: 19px;
+            vertical-align: top;
+        }
+        .invisible{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="buttons">
+            <span id="add" class="button selected">增加</span>
+            <span id="update" class="button">更新</span>
+            <span id="delete" class="button">删除 </span>
+        </div>
+        <form id="add_action">
+            <div class="row">
+                <label for="id">ID</label><input type="text" id="id" autocomplete="off">
+            </div>
+            <div class="row">
+                <label for="name">Name</label><input type="text" id="name" autocomplete="off">
+            </div>
+            <div class="row">
+                <label for="email">Email</label><input type="email" id="email" autocomplete="off">
+            </div>
+            <div class="row">
+                <label for="address">Address</label><input type="text" id="address" autocomplete="off">
+            </div>
+            <div class="row">
+                <label for="submit"></label><input type="submit" value="确定">
+            </div>
+        </form>
+        <form id="update_action" class="invisible">
+            <div class="row">
+                <select name="user_selector" id="user_selector">
+                </select>
+            </div>
+            <div class="row">
+                <label for="name">Name</label><input type="text" id="name" autocomplete="off">
+            </div>
+            <div class="row">
+                <label for="email">Email</label><input type="email" id="email" autocomplete="off">
+            </div>
+            <div class="row">
+                <label for="address">Address</label><input type="text" id="address" autocomplete="off">
+            </div>
+            <div class="row">
+                <label for="submit"></label><input type="submit" value="确定">
+            </div>
+        </form>
+        <form id="delete_action" class="invisible">
+            <div class="row">
+                <select name="user_selector" id="user_selector">
+                </select>
+            </div>
+            <div class="row">
+            <input type="submit" value="确定">
+            </div>
+            
+        </form>
+        <div class="content"></div>
+    </div>
+
+    <script>
+    let selectedId = "add";
+    const btns_elm = document.querySelector(".buttons");
+    const btns_submit = document.querySelectorAll("[type='submit']");
+    const content = document.querySelector(".content");
+    const updateContent = function(){
+        getList(function(data){
+            content.innerHTML = null;
+            const fragment = document.createDocumentFragment();
+            Object.keys(data).forEach(id => {
+                var block = document.createElement("ul");
+                block.id = id;
+                block.classList.add("item");
+                Object.keys(data[id]).forEach(key => {
+                    var div = document.createElement("li");
+                    div.classList.add(key);
+                    var text = document.createTextNode(data[id][key]);
+                    div.appendChild(text);
+                    block.appendChild(div);
+                })
+                fragment.appendChild(block);
+            });
+            content.appendChild(fragment);
+        })
+    }
+    const updateForm = function(){
+        var selector = document.querySelector("#"+selectedId+"_action #user_selector");
+        selector.innerHTML = null;
+        getList(function(data){
+            Object.keys(data).forEach(id => {
+                var option = new Option(data[id]["name"],id);
+                selector.add(option);
+            })
+            selector.selectedIndex = 0;
+            var form = document.querySelector("#"+selectedId+"_action");
+            const fields = Array.prototype.filter.call(form.elements, item => {
+                return item.id && item.id!=="user_selector";
+            })
+            
+            if(fields.length>0){
+                const updateFields = function(){
+                    var selectedValue = selector.selectedOptions[0].value;
+                    fields.forEach(field => {
+                        field.value = data[selectedValue][field.id];
+                    })
+                }
+                selector.onchange = function(){
+                    updateFields();
+                }
+                updateFields();
+            }
+        })
+    }
+    
+    const getList = function(callback){
+        axios.get("/userlist").then(function(response){
+            const {data} = response;
+            callback(data);
+        })
+    }
+    const addUser = function(newUser){
+        axios.post("/adduser",newUser).then(function(){
+            updateContent();
+        }).catch(function(err){
+            console.log(err);
+        })
+    }
+    const updateUser = function(info){
+        axios.put("/updateuser",info).then(function(){
+            updateContent();
+        }).catch(function(err){
+            console.log(err);
+        })
+    }
+    const deleteUser = function(data){
+        axios.delete("/deleteuser",data).then(function(){
+            updateContent();
+        }).catch(function(err){
+            console.log(err);
+        })
+    }
+    window.onload = function(){
+        updateContent();
+    }
+
+    btns_elm.onclick = function(event){
+        selectedId = event.target.id;
+        Array.prototype.forEach.call(btns_elm.children,(elm) => {
+            var action_elm;
+            if(elm.id === selectedId){
+                elm.classList.add("selected");
+                action_elm = document.querySelector("#"+elm.id+"_action");
+                action_elm.classList.remove("invisible");
+                if(selectedId === "update" || selectedId === "delete"){
+                    updateForm();
+                }
+            }else{
+                elm.classList.remove("selected");
+                action_elm = document.querySelector("#"+elm.id+"_action");
+                action_elm.classList.add("invisible");                
+            }
+        });
+
+    }
+    btns_submit[0].onclick = function(event){
+        event.preventDefault();
+        handleAdd();
+    }
+    btns_submit[1].onclick = function(event){
+        event.preventDefault();
+        handleUpdate();
+    }
+    btns_submit[2].onclick = function(event){
+        event.preventDefault();
+        handleDelete();
+    }    
+    
+    const handleAdd = function(){
+        var form = document.querySelector("#"+selectedId+"_action");
+        var newUser = {};
+        Array.prototype.forEach.call(form.elements,(field) => {
+            field.id && (newUser[field.id] = field.value);
+        })
+        addUser(newUser);
+    }
+    const handleUpdate = function(){
+        var newInfo = {};
+        var selector = document.querySelector("#"+selectedId+"_action #user_selector");
+        var selectedValue = selector.selectedOptions[0].value;
+        newInfo["id"] = selectedValue;
+        var form = document.querySelector("#"+selectedId+"_action");
+        Array.prototype.forEach.call(form.elements,(field) => {
+            if(field.id && field.id !=="user_selector"){
+                newInfo[field.id] = field.value;
+            }
+        })
+        updateUser(newInfo);
+    }
+    const handleDelete = function(){
+        var selector = document.querySelector("#"+selectedId+"_action #user_selector");
+        var selectedValue = selector.selectedOptions[0].value;
+        const data = {
+            params:{
+                id:selectedValue
+            }
+        }
+        deleteUser(data);
+    }
+    </script>
+</body>
+</html>
