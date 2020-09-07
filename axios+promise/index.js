@@ -1,8 +1,12 @@
 const express = require("express");
 const server = express();
 server.use(express.static(__dirname));
-const bodyPraser = require("body-parser");
-server.use(bodyPraser.json());
+
+// const bodyPraser = require("body-parser");
+// server.use(bodyPraser.json());
+const test = require("./test.js");
+server.use(test());
+
 const fs = require("fs");
 const jsonPath = "./data/list.json";
 const encoding = "utf8";
